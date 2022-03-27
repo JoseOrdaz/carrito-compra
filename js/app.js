@@ -1,5 +1,4 @@
 //Variables
-
 const carrito = document.querySelector('#carrito');
 const contenedorCarrito = carrito.querySelector('#lista-carrito tbody');
 const vaciarCarritoBtn = carrito.querySelector('#vaciar-carrito');
@@ -12,13 +11,14 @@ function cargarEventListeners(){
     listaCursos.addEventListener('click', agregarCurso);
 
     //Elimina cursos del carrito
-
     carrito.addEventListener('click', eliminarCurso);
+
+    //Vaciar carrito
+    vaciarCarritoBtn.addEventListener('click', vaciarCarrito)
 
 }
 
 //Funciones
-
 function agregarCurso(e){
     e.preventDefault();
 
@@ -27,6 +27,15 @@ function agregarCurso(e){
         leerDatosCurso(cursoSeleccionado);
     }
 }
+
+//Vaciar carrito
+
+function vaciarCarrito(){
+
+    articulosCarrito = [];
+    limpiarHTML();
+}
+
 
 //Eliminar curso
 
@@ -43,10 +52,7 @@ function eliminarCurso(e){
 
 }
 
-
-
 //Coger contenidos del div #lista-cursos para extraer info y agragar al carrito
-
 
 function leerDatosCurso(curso){
 
@@ -59,9 +65,9 @@ function leerDatosCurso(curso){
         cantidad: 1,
     }
 
-    //Revisar si ya existe en el carrito 
+    //Revisar si ya existe en el carrito
     const existe = articulosCarrito.some(curso=> curso.id === infoCurso.id);
-   
+
     if(existe){
 
         const cursos = articulosCarrito.map(curso=> {
@@ -91,7 +97,7 @@ function carritoHTML(){
     limpiarHTML();
 
     articulosCarrito.forEach(curso => {
-        const {imagen, titulo,precio, id, cantidad} = curso;
+        const {imagen,titulo,precio, id, cantidad} = curso;
         const row = document.createElement('tr');
         row.innerHTML = `
         <td><img src="${imagen}" width="100px"></td>
