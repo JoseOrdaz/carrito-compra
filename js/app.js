@@ -31,7 +31,7 @@ function leerDatosCurso(curso){
 
     //Crear un objecto con el contenido
     const infoCurso = {
-        imgen: curso.querySelector('img').src,
+        imagen: curso.querySelector('img').src,
         titulo: curso.querySelector('h4').textContent,
         precio: curso.querySelector('.precio span').textContent,
         id: curso.querySelector('a').getAttribute('data-id'),
@@ -54,13 +54,16 @@ function carritoHTML(){
     limpiarHTML();
 
     articulosCarrito.forEach(curso => {
+        console.log(curso);
         const row = document.createElement('tr');
         row.innerHTML = `
         <td>
-        ${curso.titulo};
-
-        
+        <img src="${curso.imagen}" width="100px">
         </td>
+        
+        <td>${curso.titulo};</td>
+        <td>${curso.precio};</td>
+        <td>${curso.cantidad};</td>
         `;
         //Agregar el html al carritoHTML
         contenedorCarrito.appendChild(row);
@@ -71,6 +74,11 @@ function carritoHTML(){
 //Limpiar HTML, eliminar los cursos del tbody
 
 function limpiarHTML(){
-   
-    
+    //contenedorCarrito.innerHTML = '';
+
+    while(contenedorCarrito.firstChild){
+        contenedorCarrito.removeChild(contenedorCarrito.firstChild);
+
+    }
+
 }
