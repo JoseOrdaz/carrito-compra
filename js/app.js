@@ -12,7 +12,6 @@ function cargarEventListeners(){
     listaCursos.addEventListener('click', agregarCurso);
 }
 
-
 //Funciones
 
 function agregarCurso(e){
