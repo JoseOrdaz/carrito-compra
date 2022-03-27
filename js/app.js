@@ -71,6 +71,6 @@ function carritoHTML(){
 //Limpiar HTML, eliminar los cursos del tbody
 
 function limpiarHTML(){
-    contenedorCarrito.innerHTML = '';
-
+   
+    
 }
